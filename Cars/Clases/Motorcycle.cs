@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Cars.Class
+namespace Cars.Clases
 {
     class Motorcycle : Car
     {
-        public Motorcycle(int id, int speed, int type)
+        protected bool stroller;
+
+        public bool Stroller { get => stroller; }
+        public Motorcycle(int speed)
         {
-            this.id = id;
             this.speed = speed;
-            this.type = type;
         }
     }
 }
