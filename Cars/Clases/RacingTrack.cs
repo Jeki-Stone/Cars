@@ -14,17 +14,13 @@ namespace Cars.Clases
     class RacingTrack
     {
         /// <summary>
-        /// Радиус трека для расчёта положения объекта по X и Y на треке
-        /// </summary>
-        private Graphics graphics;
-        /// <summary>
         /// Длина трека
         /// </summary>
         private int trackLength;
         /// <summary>
         /// Радиус трека для расчёта положения объекта по X и Y на треке
         /// </summary>
-        private int trackRadius = 160;
+        private int trackRadius = 165;
         /// <summary>
         /// Координата центра по оси X
         /// </summary>
@@ -49,16 +45,14 @@ namespace Cars.Clases
         /// <summary>
         /// Коллекция машин
         /// </summary>
-        public List<ICar> Cars { get; set; }
+        public List<ICar> Cars { get; set; } = new List<ICar>();
         /// <summary>
         /// Длина трека
         /// </summary>
         public int TrackLength { get => trackLength; }
 
-        public RacingTrack(Graphics graphics, int trackLength)
-        {
-            this.graphics = graphics;
-           
+        public RacingTrack( int trackLength)
+        {           
             SetTrackLength(trackLength);
         }
 
@@ -98,20 +92,22 @@ namespace Cars.Clases
         /// <summary>
         /// Обновляет положение машин на треке, вызывается внешним таймером
         /// </summary>
-        public void RefreshPositions()
+        public void RefreshPositions(ref int ximg, ref int yimg)
         {
             //todo Опросить каждую машину о пройденном пути, для вычисления координат на треке
             foreach (var item in Cars)
             {
                 // Получить дистанцию машины
-                var distance = item.DistanceTraveled;
+                var distance = item.CalculatTheDistanceTraveled();
 
                 // Вычислить координаты машины на треке
                 int x = 0, y = 0;
                 CalculatePosition(distance, ref x, ref y);
+                ximg = x;
+                yimg = y;
 
                 // Нарисовать машину по заданным координатам
-                Draw(item, x, y);
+                //Draw(item, x, y);
             }
         }
 

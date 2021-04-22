@@ -43,9 +43,9 @@ namespace Cars
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var g = this.pictureBox1.CreateGraphics();
-            trec = new RacingTrack(g, 1000);
-//            trec.SetTrackLength(2000);
+            trec = new RacingTrack(1000);
+
+            //trec.SetTrackLength(2000);
             //var car1 = new Cars.Class.Car(30);
             //var Truck = new Cars.Class.Truck(25);
             //var Motorcycle = new Cars.Class.Motorcycle(35);
@@ -73,6 +73,20 @@ namespace Cars
 
             time = h + ":" + m + ":" + s;
             label2.Text = time;
+
+            int ximg = 0;
+            int yimg = 0;
+            trec.RefreshPositions(ref ximg, ref yimg);
+            ximg -= 25;
+            yimg -= 25;
+            pictureBox2.Location = new Point(ximg, yimg);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var car = new Car(@"\Img\car.png", Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), 4);
+            trec.Cars.Add(car);
+            comboBox1.Items.Add(car);
         }
     }
 }

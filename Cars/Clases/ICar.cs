@@ -39,7 +39,7 @@ namespace Cars.Clases
         /// <summary>
         /// Время начала движения
         /// </summary>
-        DateTime? TimeStart { get; }
+        DateTime TimeStart { get; }
         /// <summary>
         /// Время остановки
         /// </summary>
@@ -60,5 +60,10 @@ namespace Cars.Clases
         /// Остановить машину
         /// </summary>
         void Stop();
+        /// <summary>
+        /// Вычислить пройденный путь
+        /// </summary>
+        /// <returns></returns>
+        int CalculatTheDistanceTraveled();
     }
 }
