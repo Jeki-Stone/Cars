@@ -14,11 +14,8 @@ namespace Cars
     public partial class Form1 : Form
     {
         RacingTrack trec;
-        private int h = 0;
-        private int m = 0;
-        private int s = 0;
-        private bool start = false;
-
+        DateTime startDt;
+    
         public Form1()
         {
             InitializeComponent();
@@ -32,12 +29,16 @@ namespace Cars
             if (!trec.IsStarted)
             {
                 timer1.Start();
+                trec.SetTrackLength(Convert.ToInt32(textBox1.Text));
                 trec.Start();
+                startDt = DateTime.Now;
+                button1.Text = "СТОП";
             }
             else
             {
                 timer1.Stop();
                 trec.Stop();
+                button1.Text = "СТАРТ";
             }
         }
 
@@ -57,36 +58,33 @@ namespace Cars
         /// <summary>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            string time;
+            label2.Text = (DateTime.Now - startDt).ToString(@"hh\:mm\:ss");
+            trec.RefreshPositions();
 
-            s += 1;
-            if (s == 60)
+            if (!trec.Cars.Any(el => el.IsRun))
             {
-                s = 0;
-                m += 1;
+                timer1.Stop();
+                trec.Stop();
+                button1.Text = "СТАРТ";
             }
-            if (m == 60)
-            {
-                m = 0;
-                h += 1;
-            }
-
-            time = h + ":" + m + ":" + s;
-            label2.Text = time;
-
-            int ximg = 0;
-            int yimg = 0;
-            trec.RefreshPositions(ref ximg, ref yimg);
-            ximg -= 25;
-            yimg -= 25;
-            pictureBox2.Location = new Point(ximg, yimg);
         }
 
+        /// <summary>
+        /// Добавить машину в коллекцию
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            var car = new Car(@"\Img\car.png", Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), 4);
+            var car = new Car(@"Img\car.png", Convert.ToInt32(textBox2.Text), Convert.ToInt32(textBox3.Text), Convert.ToInt32(textBox4.Text), 4, 353, 188, panel1);
             trec.Cars.Add(car);
             comboBox1.Items.Add(car);
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            timer1.Stop();
+            trec.Stop();
         }
     }
 }

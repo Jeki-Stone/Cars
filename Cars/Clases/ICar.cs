@@ -64,6 +64,10 @@ namespace Cars.Clases
         /// Вычислить пройденный путь
         /// </summary>
         /// <returns></returns>
-        int CalculatTheDistanceTraveled();
+        float CalculatTheDistanceTraveled();
+        /// <summary>
+        /// Машина перерисовывает себя на новые координаты
+        /// </summary>
+        void Draw(int x, int y);
     }
 }

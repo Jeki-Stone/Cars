@@ -85,14 +85,14 @@ namespace Cars.Clases
         public void Stop()
         {
             IsStarted = false;
-            foreach (var item in Cars)
-                item.Stop();
+            foreach (var item in Cars.Where(el => el.IsRun))
+                    item.Stop();
         }
 
         /// <summary>
         /// Обновляет положение машин на треке, вызывается внешним таймером
         /// </summary>
-        public void RefreshPositions(ref int ximg, ref int yimg)
+        public void RefreshPositions()
         {
             //todo Опросить каждую машину о пройденном пути, для вычисления координат на треке
             foreach (var item in Cars)
@@ -100,14 +100,20 @@ namespace Cars.Clases
                 // Получить дистанцию машины
                 var distance = item.CalculatTheDistanceTraveled();
 
-                // Вычислить координаты машины на треке
-                int x = 0, y = 0;
-                CalculatePosition(distance, ref x, ref y);
-                ximg = x;
-                yimg = y;
-
-                // Нарисовать машину по заданным координатам
-                //Draw(item, x, y);
+                if(item.IsRun == true)
+                    if (trackLength <= distance)
+                    {
+                        item.Stop();
+                    }
+                    else
+                    {
+                        // Вычислить координаты машины на треке
+                        int x = 0, y = 0;
+                        CalculatePosition(distance, ref x, ref y);
+                    
+                        // Нарисовать машину по заданным координатам
+                        item.Draw(x - 25, y - 25);
+                    }
             }
         }
 
@@ -117,7 +123,7 @@ namespace Cars.Clases
         /// <param name="distance"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        private void CalculatePosition(int distance, ref int x, ref int y)
+        private void CalculatePosition(float distance, ref int x, ref int y)
         {
             //todo Найти в интернете формулы расчёта позиции точки на окружности по длине дуги если известен радиус
             // Дистанцию в пикселях
@@ -127,17 +133,6 @@ namespace Cars.Clases
             //координата у = y0 + (R * sin(D/R))
             x = Convert.ToInt32(trackX + (trackRadius * Math.Cos(d / trackRadius)));
             y = Convert.ToInt32(trackY + (trackRadius * Math.Sin(d / trackRadius)));            
-        }
-
-        /// <summary>
-        /// Отрисовать картинку машины в заданной точке
-        /// </summary>
-        /// <param name="item"></param>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        private void Draw(ICar item, int x, int y)
-        {
-            
         }
     }
 }
