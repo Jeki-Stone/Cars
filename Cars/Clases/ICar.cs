@@ -19,7 +19,7 @@ namespace Cars.Clases
         /// <summary>
         /// Пройденная дистанция
         /// </summary>
-        int DistanceTraveled { get; }
+        float DistanceTraveled { get; }
         /// <summary>
         /// Путь к изображению
         /// </summary>
@@ -69,5 +69,9 @@ namespace Cars.Clases
         /// Машина перерисовывает себя на новые координаты
         /// </summary>
         void Draw(int x, int y);
+        /// <summary>
+        /// CalculatingTheChanceOfBreakage
+        /// </summary>
+        void CalculatingTheChanceOfBreakage();
     }
 }

@@ -97,23 +97,31 @@ namespace Cars.Clases
             //todo Опросить каждую машину о пройденном пути, для вычисления координат на треке
             foreach (var item in Cars)
             {
-                // Получить дистанцию машины
-                var distance = item.CalculatTheDistanceTraveled();
+                // Проверим прокололось ли колесо
+                item.CalculatingTheChanceOfBreakage();
 
-                if(item.IsRun == true)
-                    if (trackLength <= distance)
+                if (item.IsBroken == false)
+                {
+                    if (item.IsRun == true)
                     {
-                        item.Stop();
+                        // Получить дистанцию машины
+                        var distance = item.CalculatTheDistanceTraveled();
+
+                        if (trackLength <= distance)
+                        {
+                            item.Stop();
+                        }
+                        else
+                        {
+                            // Вычислить координаты машины на треке
+                            int x = 0, y = 0;
+                            CalculatePosition(distance, ref x, ref y);
+
+                            // Нарисовать машину по заданным координатам
+                            item.Draw(x - 25, y - 25);
+                        }
                     }
-                    else
-                    {
-                        // Вычислить координаты машины на треке
-                        int x = 0, y = 0;
-                        CalculatePosition(distance, ref x, ref y);
-                    
-                        // Нарисовать машину по заданным координатам
-                        item.Draw(x - 25, y - 25);
-                    }
+                }
             }
         }
 

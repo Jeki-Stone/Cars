@@ -15,9 +15,11 @@ namespace Cars.Clases
         /// Объявляем переменные значений траспорта
         /// </summary>
         protected string pathImg;
+        protected string pathImgBroken;
         protected int speed;
         protected int chanceBreakage;
-        protected int distanceTraveled;
+        protected float distanceTraveled;
+        protected float olddistanceTraveled;
         protected bool isRun;
         protected bool isBroken;
         protected DateTime timeStart;
@@ -27,12 +29,14 @@ namespace Cars.Clases
         protected int downTime;
         protected int passengers;
 
-        private PictureBox pictureBox;
+        protected PictureBox pictureBox;
+        protected Random random = new Random();
 
         public string PathImg { get => pathImg; }
+        public string PathImgBroken { get => pathImgBroken; }
         public int Speed { get => speed; }
         public int ChanceBreakage { get => chanceBreakage; }
-        public int DistanceTraveled { get => distanceTraveled; }
+        public float DistanceTraveled { get => distanceTraveled; }
         public bool IsRun { get => isRun; }
         public bool IsBroken { get => isBroken; }
         public DateTime TimeStart { get => timeStart; }
@@ -44,13 +48,16 @@ namespace Cars.Clases
 
         public Car() { }
 
-        public Car(string pathImg, int speed, int chanceBreakage, int downTime, int passengers, int x, int y, Control parent)
+        public Car(string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, int passengers, int x, int y, Control parent)
         {
             this.pathImg = pathImg;
+            this.pathImgBroken = pathImgBroken;
             this.speed = speed;
             this.chanceBreakage = chanceBreakage;
             this.downTime = downTime;
             this.passengers = passengers;
+
+            this.isBroken = false;
 
             this.pictureBox = new PictureBox();
             this.pictureBox.Image = Image.FromFile(pathImg);
@@ -60,7 +67,7 @@ namespace Cars.Clases
             this.pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             this.pictureBox.Location = new Point(x, y);
             this.pictureBox.BringToFront();
-            this.pictureBox.Show();            
+            this.pictureBox.Show();
         }
 
         /// <summary>
@@ -69,6 +76,7 @@ namespace Cars.Clases
         public void Start()
         {
             isRun = true;
+            repairСompletionTime = DateTime.Now;
             timeStart = DateTime.Now;
         }
 
@@ -87,13 +95,39 @@ namespace Cars.Clases
         /// <returns></returns>
         public float CalculatTheDistanceTraveled()
         {
-            // Пройденная дистанция
-            float dt ;
             // Вычисляем прошедшее время
-            TimeSpan time = DateTime.Now.Subtract(timeStart);
+            TimeSpan time = DateTime.Now.Subtract(repairСompletionTime.Value);
             // Вычислить пройденный путь
-            dt = ((float)time.TotalSeconds) / 3600f * speed;
-            return dt;
+            distanceTraveled = ((float)time.TotalSeconds) / 3600f * speed + olddistanceTraveled;
+            return distanceTraveled;
+        }
+
+        /// <summary>
+        /// Рассчитываем вероятность поломки машины и меняем её статус поломки
+        /// </summary>
+        public void CalculatingTheChanceOfBreakage ()
+        {
+            if (isBroken == false)
+            {
+                var chance = random.Next(1, 101);
+                if (chance <= ChanceBreakage)
+                {
+                    isBroken = true;
+                    olddistanceTraveled = distanceTraveled;
+                    pictureBox.Image = Image.FromFile(pathImgBroken);
+                    timeBroken = DateTime.Now;
+                }
+            }
+            else
+            {
+                TimeSpan time = DateTime.Now.Subtract(timeBroken.Value);
+                if (downTime <= time.TotalSeconds)
+                {
+                    isBroken = false;
+                    pictureBox.Image = Image.FromFile(pathImg);
+                }
+                repairСompletionTime = DateTime.Now;
+            }
         }
 
         /// <summary>
