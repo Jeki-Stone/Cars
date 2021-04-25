@@ -1,26 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Cars.Clases
 {
+    /// <summary>
+    /// Класс мотоцикл
+    /// </summary>
     class Motorcycle : Car
     {
-        protected bool stroller;
+        protected bool isStroller;
 
-        public bool Stroller { get => stroller; }
-        public Motorcycle(string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, bool stroller, int x, int y, Control parent)
+        public override string TransportType { get => "Мотоцикл"; }
+
+        public bool IsStroller { get => isStroller; }
+        public Motorcycle(Control parent, string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, bool isStroller, int x, int y)
         {
             this.pathImg = pathImg;
             this.pathImgBroken = pathImgBroken;
             this.speed = speed;
             this.chanceBreakage = chanceBreakage;
             this.downTime = downTime;
-            this.stroller = stroller;
+            this.isStroller = isStroller;
 
             this.pictureBox = new PictureBox();
             this.pictureBox.Image = Image.FromFile(pathImg);

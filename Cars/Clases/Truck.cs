@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Cars.Clases
 {
+    /// <summary>
+    /// Класс грузовик
+    /// </summary>
     class Truck : Car
     {
         protected int amountOfCargo;
 
+        public override string TransportType { get => "Грузовой автомобиль"; }
+
         public int AmountOfCargo { get => amountOfCargo; }
-        public Truck(string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, int amountOfCargo, int x, int y, Control parent)
+        public Truck(Control parent, string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, int amountOfCargo, int x, int y)
         {
             this.pathImg = pathImg;
             this.pathImgBroken = pathImgBroken;

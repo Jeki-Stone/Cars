@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Cars.Clases
 {
-    class Car : ICar
+    /// <summary>
+    /// класс машин
+    /// </summary>
+    class Car : ICar, IDisposable
     {
         /// <summary>
         /// Объявляем переменные значений траспорта
@@ -31,9 +29,11 @@ namespace Cars.Clases
 
         protected PictureBox pictureBox;
         protected Random random = new Random();
+        private bool disposedValue;
 
         public string PathImg { get => pathImg; }
         public string PathImgBroken { get => pathImgBroken; }
+        public virtual string TransportType { get => "Легковой автомобиль"; }
         public int Speed { get => speed; }
         public int ChanceBreakage { get => chanceBreakage; }
         public float DistanceTraveled { get => distanceTraveled; }
@@ -48,7 +48,7 @@ namespace Cars.Clases
 
         public Car() { }
 
-        public Car(string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, int passengers, int x, int y, Control parent)
+        public Car(Control parent, string pathImg, string pathImgBroken, int speed, int chanceBreakage, int downTime, int passengers, int x, int y)
         {
             this.pathImg = pathImg;
             this.pathImgBroken = pathImgBroken;
@@ -77,6 +77,8 @@ namespace Cars.Clases
         {
             isRun = true;
             repairСompletionTime = DateTime.Now;
+            distanceTraveled = 0;
+            olddistanceTraveled = 0;
             timeStart = DateTime.Now;
         }
 
@@ -88,6 +90,18 @@ namespace Cars.Clases
             isRun = false;
             timeStop = DateTime.Now;
         }
+
+        /// <summary>
+        /// Останавливает машину по прибытию на финиш
+        /// </summary>
+        /// <param name="trackLength"></param>
+        public void Stop(int trackLength)
+        {
+            isRun = false;
+            distanceTraveled = trackLength;
+            timeStop = DateTime.Now;
+        }
+
 
         /// <summary>
         /// Вычислить пройденный путь
@@ -107,10 +121,10 @@ namespace Cars.Clases
         /// </summary>
         public void CalculatingTheChanceOfBreakage ()
         {
-            if (isBroken == false)
+            if (!isBroken)
             {
-                var chance = random.Next(1, 101);
-                if (chance <= ChanceBreakage)
+                var chance = random.Next(0, 10000);
+                if (chance <= chanceBreakage)
                 {
                     isBroken = true;
                     olddistanceTraveled = distanceTraveled;
@@ -138,6 +152,30 @@ namespace Cars.Clases
         public void Draw (int x, int y)
         {
             pictureBox.Location = new Point(x, y);
+        }
+
+        /// <summary>
+        /// Удаляет картинку машинки с трека
+        /// </summary>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: освободить управляемое состояние (управляемые объекты)
+                    pictureBox.Dispose();
+                }
+                // TODO: освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения
+                // TODO: установить значение NULL для больших полей
+                disposedValue = true;
+            }
+        }
+        public void Dispose()
+        {
+            // Не изменяйте этот код. Разместите код очистки в методе "Dispose(bool disposing)".
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

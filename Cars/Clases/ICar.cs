@@ -25,6 +25,10 @@ namespace Cars.Clases
         /// </summary>
         string PathImg { get; }
         /// <summary>
+        /// Тип машины
+        /// </summary>
+        string TransportType { get; }
+        /// <summary>
         /// Скорость Км/ч
         /// </summary>
         int Speed { get; }
@@ -61,6 +65,10 @@ namespace Cars.Clases
         /// </summary>
         void Stop();
         /// <summary>
+        /// Останавливает машину по прибытию на финиш
+        /// </summary>
+        void Stop(int trackLength);
+        /// <summary>
         /// Вычислить пройденный путь
         /// </summary>
         /// <returns></returns>
@@ -73,5 +81,9 @@ namespace Cars.Clases
         /// CalculatingTheChanceOfBreakage
         /// </summary>
         void CalculatingTheChanceOfBreakage();
+        /// <summary>
+        /// Удаляет картинку машинки с трека
+        /// </summary>
+        void Dispose();
     }
 }
