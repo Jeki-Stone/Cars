@@ -51,8 +51,8 @@ namespace Cars.Clases
         /// </summary>
         public int TrackLength { get => trackLength; }
 
-        public RacingTrack( int trackLength)
-        {           
+        public RacingTrack(int trackLength)
+        {
             SetTrackLength(trackLength);
         }
 
@@ -86,7 +86,7 @@ namespace Cars.Clases
         {
             IsStarted = false;
             foreach (var item in Cars.Where(el => el.IsRun))
-                    item.Stop();
+                item.Stop();
         }
 
         /// <summary>
@@ -95,25 +95,29 @@ namespace Cars.Clases
         public void RefreshPositions()
         {
             //todo Опросить каждую машину о пройденном пути, для вычисления координат на треке
-            foreach (var item in Cars)
+            foreach (var item in Cars.Where(el => el.IsRun))
             {
-                // Получить дистанцию машины
-                var distance = item.CalculatTheDistanceTraveled();
+                // Проверим прокололось ли колесо                
+                item.CalculatingTheChanceOfBreakage();
 
-                if(item.IsRun == true)
-                    if (trackLength <= distance)
+                if (!item.IsBroken)
+                {
+                    // Получить дистанцию машины
+                    var distance = item.CalculatTheDistanceTraveled();
+
+                    if (trackLength < distance)
                     {
-                        item.Stop();
+                        distance = trackLength;
+                        item.Stop(trackLength);
                     }
-                    else
-                    {
-                        // Вычислить координаты машины на треке
-                        int x = 0, y = 0;
-                        CalculatePosition(distance, ref x, ref y);
-                    
-                        // Нарисовать машину по заданным координатам
-                        item.Draw(x - 25, y - 25);
-                    }
+
+                    // Вычислить координаты машины на треке
+                    int x = 0, y = 0;
+                    CalculatePosition(distance, ref x, ref y);
+                    // Нарисовать машину по заданным координатам
+                    item.Draw(x - 25, y - 25);
+
+                }
             }
         }
 
@@ -132,7 +136,7 @@ namespace Cars.Clases
             //координата х = x0 + (R * cos(D/R))
             //координата у = y0 + (R * sin(D/R))
             x = Convert.ToInt32(trackX + (trackRadius * Math.Cos(d / trackRadius)));
-            y = Convert.ToInt32(trackY + (trackRadius * Math.Sin(d / trackRadius)));            
+            y = Convert.ToInt32(trackY + (trackRadius * Math.Sin(d / trackRadius)));
         }
     }
 }

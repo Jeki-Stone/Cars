@@ -19,11 +19,15 @@ namespace Cars.Clases
         /// <summary>
         /// Пройденная дистанция
         /// </summary>
-        int DistanceTraveled { get; }
+        float DistanceTraveled { get; }
         /// <summary>
         /// Путь к изображению
         /// </summary>
         string PathImg { get; }
+        /// <summary>
+        /// Тип машины
+        /// </summary>
+        string TransportType { get; }
         /// <summary>
         /// Скорость Км/ч
         /// </summary>
@@ -61,6 +65,10 @@ namespace Cars.Clases
         /// </summary>
         void Stop();
         /// <summary>
+        /// Останавливает машину по прибытию на финиш
+        /// </summary>
+        void Stop(int trackLength);
+        /// <summary>
         /// Вычислить пройденный путь
         /// </summary>
         /// <returns></returns>
@@ -69,5 +77,13 @@ namespace Cars.Clases
         /// Машина перерисовывает себя на новые координаты
         /// </summary>
         void Draw(int x, int y);
+        /// <summary>
+        /// CalculatingTheChanceOfBreakage
+        /// </summary>
+        void CalculatingTheChanceOfBreakage();
+        /// <summary>
+        /// Удаляет картинку машинки с трека
+        /// </summary>
+        void Dispose();
     }
 }
