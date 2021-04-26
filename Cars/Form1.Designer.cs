@@ -1,6 +1,10 @@
 ﻿
 namespace Cars
 {
+    /// <summary>
+    /// Автор: Кузугашев Иван Владимирович
+    /// Дата: 26.04.2021
+    /// </summary>
     partial class Form1
     {
         /// <summary>
@@ -30,28 +34,28 @@ namespace Cars
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonRaceStart = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
+            this.buttonClearTheListOfCars = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtPassengersOrCargo = new System.Windows.Forms.TextBox();
+            this.txtRepairTime = new System.Windows.Forms.TextBox();
+            this.buttonAddTransport = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPunctureСhance = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtSpeed = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTransportType = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTrackLength = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewListOfCars = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,34 +69,34 @@ namespace Cars
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListOfCars)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonRaceStart
             // 
-            this.button1.Location = new System.Drawing.Point(530, 362);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 58);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "СТАРТ";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRaceStart.Location = new System.Drawing.Point(530, 362);
+            this.buttonRaceStart.Name = "buttonRaceStart";
+            this.buttonRaceStart.Size = new System.Drawing.Size(182, 58);
+            this.buttonRaceStart.TabIndex = 9;
+            this.buttonRaceStart.Text = "СТАРТ";
+            this.buttonRaceStart.UseVisualStyleBackColor = true;
+            this.buttonRaceStart.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Controls.Add(this.buttonClearTheListOfCars);
             this.groupBox1.Controls.Add(this.checkBox1);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.txtPassengersOrCargo);
+            this.groupBox1.Controls.Add(this.txtRepairTime);
+            this.groupBox1.Controls.Add(this.buttonAddTransport);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtPunctureСhance);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtSpeed);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.comboBoxTransportType);
             this.groupBox1.Location = new System.Drawing.Point(444, 41);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(344, 240);
@@ -100,15 +104,15 @@ namespace Cars
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Данные для нового транспорта";
             // 
-            // button3
+            // buttonClearTheListOfCars
             // 
-            this.button3.Location = new System.Drawing.Point(20, 192);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(148, 31);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "Очистить список";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.buttonClearTheListOfCars.Location = new System.Drawing.Point(20, 192);
+            this.buttonClearTheListOfCars.Name = "buttonClearTheListOfCars";
+            this.buttonClearTheListOfCars.Size = new System.Drawing.Size(148, 31);
+            this.buttonClearTheListOfCars.TabIndex = 10;
+            this.buttonClearTheListOfCars.Text = "Очистить список";
+            this.buttonClearTheListOfCars.UseVisualStyleBackColor = true;
+            this.buttonClearTheListOfCars.Click += new System.EventHandler(this.button3_Click);
             // 
             // checkBox1
             // 
@@ -121,30 +125,34 @@ namespace Cars
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.Visible = false;
             // 
-            // textBox5
+            // txtPassengersOrCargo
             // 
-            this.textBox5.Location = new System.Drawing.Point(161, 154);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(177, 23);
-            this.textBox5.TabIndex = 6;
-            this.textBox5.Visible = false;
+            this.txtPassengersOrCargo.Location = new System.Drawing.Point(161, 154);
+            this.txtPassengersOrCargo.MaxLength = 3;
+            this.txtPassengersOrCargo.Name = "txtPassengersOrCargo";
+            this.txtPassengersOrCargo.Size = new System.Drawing.Size(167, 23);
+            this.txtPassengersOrCargo.TabIndex = 6;
+            this.txtPassengersOrCargo.Visible = false;
+            this.txtPassengersOrCargo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassengersOrCargo_KeyPress);
             // 
-            // textBox4
+            // txtRepairTime
             // 
-            this.textBox4.Location = new System.Drawing.Point(161, 125);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(177, 23);
-            this.textBox4.TabIndex = 5;
+            this.txtRepairTime.Location = new System.Drawing.Point(161, 125);
+            this.txtRepairTime.MaxLength = 3;
+            this.txtRepairTime.Name = "txtRepairTime";
+            this.txtRepairTime.Size = new System.Drawing.Size(167, 23);
+            this.txtRepairTime.TabIndex = 5;
+            this.txtRepairTime.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTextWrite_KeyPress);
             // 
-            // button2
+            // buttonAddTransport
             // 
-            this.button2.Location = new System.Drawing.Point(234, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonAddTransport.Location = new System.Drawing.Point(234, 192);
+            this.buttonAddTransport.Name = "buttonAddTransport";
+            this.buttonAddTransport.Size = new System.Drawing.Size(86, 31);
+            this.buttonAddTransport.TabIndex = 8;
+            this.buttonAddTransport.Text = "Добавить";
+            this.buttonAddTransport.UseVisualStyleBackColor = true;
+            this.buttonAddTransport.Click += new System.EventHandler(this.button2_Click);
             // 
             // label9
             // 
@@ -174,12 +182,14 @@ namespace Cars
             this.label5.TabIndex = 2;
             this.label5.Text = "Тип транспорта:";
             // 
-            // textBox3
+            // txtPunctureСhance
             // 
-            this.textBox3.Location = new System.Drawing.Point(161, 97);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(177, 23);
-            this.textBox3.TabIndex = 4;
+            this.txtPunctureСhance.Location = new System.Drawing.Point(161, 97);
+            this.txtPunctureСhance.MaxLength = 3;
+            this.txtPunctureСhance.Name = "txtPunctureСhance";
+            this.txtPunctureСhance.Size = new System.Drawing.Size(167, 23);
+            this.txtPunctureСhance.TabIndex = 4;
+            this.txtPunctureСhance.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPunctureСhance_KeyPress);
             // 
             // label6
             // 
@@ -193,9 +203,11 @@ namespace Cars
             // txtSpeed
             // 
             this.txtSpeed.Location = new System.Drawing.Point(161, 70);
+            this.txtSpeed.MaxLength = 3;
             this.txtSpeed.Name = "txtSpeed";
-            this.txtSpeed.Size = new System.Drawing.Size(177, 23);
+            this.txtSpeed.Size = new System.Drawing.Size(167, 23);
             this.txtSpeed.TabIndex = 3;
+            this.txtSpeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxTextWrite_KeyPress);
             // 
             // label7
             // 
@@ -206,19 +218,19 @@ namespace Cars
             this.label7.TabIndex = 4;
             this.label7.Text = "Шанс прокола колеса, %:";
             // 
-            // comboBox2
+            // comboBoxTransportType
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.comboBoxTransportType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTransportType.FormattingEnabled = true;
+            this.comboBoxTransportType.Items.AddRange(new object[] {
             "Легковой автомобиль",
             "Грузовой автомобиль",
             "Мотоцикл"});
-            this.comboBox2.Location = new System.Drawing.Point(161, 36);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(177, 23);
-            this.comboBox2.TabIndex = 2;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxTransportType.Location = new System.Drawing.Point(161, 36);
+            this.comboBoxTransportType.Name = "comboBoxTransportType";
+            this.comboBoxTransportType.Size = new System.Drawing.Size(167, 23);
+            this.comboBoxTransportType.TabIndex = 2;
+            this.comboBoxTransportType.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // timer1
             // 
@@ -234,13 +246,14 @@ namespace Cars
             this.label1.TabIndex = 3;
             this.label1.Text = "Длина круга, км";
             // 
-            // textBox1
+            // txtTrackLength
             // 
-            this.textBox1.Location = new System.Drawing.Point(605, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "1";
+            this.txtTrackLength.Location = new System.Drawing.Point(605, 12);
+            this.txtTrackLength.MaxLength = 3;
+            this.txtTrackLength.Name = "txtTrackLength";
+            this.txtTrackLength.Size = new System.Drawing.Size(100, 23);
+            this.txtTrackLength.TabIndex = 1;
+            this.txtTrackLength.Text = "1";
             // 
             // label2
             // 
@@ -272,14 +285,14 @@ namespace Cars
             this.panel1.Size = new System.Drawing.Size(426, 426);
             this.panel1.TabIndex = 10;
             // 
-            // dataGridView1
+            // dataGridViewListOfCars
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewListOfCars.AllowUserToAddRows = false;
+            this.dataGridViewListOfCars.AllowUserToDeleteRows = false;
+            this.dataGridViewListOfCars.AllowUserToOrderColumns = true;
+            this.dataGridViewListOfCars.AllowUserToResizeRows = false;
+            this.dataGridViewListOfCars.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewListOfCars.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.ColumnStatus,
@@ -290,13 +303,13 @@ namespace Cars
             this.Column7,
             this.Column8,
             this.Column9});
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 448);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(775, 191);
-            this.dataGridView1.TabIndex = 11;
+            this.dataGridViewListOfCars.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewListOfCars.Location = new System.Drawing.Point(13, 448);
+            this.dataGridViewListOfCars.Name = "dataGridViewListOfCars";
+            this.dataGridViewListOfCars.RowHeadersVisible = false;
+            this.dataGridViewListOfCars.RowTemplate.Height = 25;
+            this.dataGridViewListOfCars.Size = new System.Drawing.Size(775, 191);
+            this.dataGridViewListOfCars.TabIndex = 11;
             // 
             // Column1
             // 
@@ -314,35 +327,35 @@ namespace Cars
             // 
             this.ColumnStatus.HeaderText = "Статус";
             this.ColumnStatus.Name = "ColumnStatus";
-            this.ColumnStatus.Width = 60;
+            this.ColumnStatus.Width = 65;
             // 
             // Column3
             // 
             this.Column3.HeaderText = "Скорость Км/ч";
             this.Column3.Name = "Column3";
-            this.Column3.Width = 65;
+            this.Column3.Width = 70;
             // 
             // Column4
             // 
             this.Column4.HeaderText = "Шанс прокола колеса";
             this.Column4.Name = "Column4";
-            this.Column4.Width = 60;
+            this.Column4.Width = 70;
             // 
             // Column5
             // 
             this.Column5.HeaderText = "Время ремонта";
             this.Column5.Name = "Column5";
-            this.Column5.Width = 65;
+            this.Column5.Width = 70;
             // 
             // Column6
             // 
             this.Column6.HeaderText = "Число пассажир";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 70;
+            this.Column6.Width = 80;
             // 
             // Column7
             // 
-            this.Column7.HeaderText = "Количество груза";
+            this.Column7.HeaderText = "Количество груза, Т";
             this.Column7.Name = "Column7";
             this.Column7.Width = 80;
             // 
@@ -350,7 +363,7 @@ namespace Cars
             // 
             this.Column8.HeaderText = "Наличие коляски";
             this.Column8.Name = "Column8";
-            this.Column8.Width = 75;
+            this.Column8.Width = 80;
             // 
             // Column9
             // 
@@ -363,13 +376,13 @@ namespace Cars
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 651);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewListOfCars);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTrackLength);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonRaceStart);
             this.Name = "Form1";
             this.Text = "Трек";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -378,7 +391,7 @@ namespace Cars
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListOfCars)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -386,29 +399,29 @@ namespace Cars
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonRaceStart;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTrackLength;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button buttonAddTransport;
+        private System.Windows.Forms.ComboBox comboBoxTransportType;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPunctureСhance;
         private System.Windows.Forms.TextBox txtSpeed;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtRepairTime;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtPassengersOrCargo;
         private System.Windows.Forms.Label Километров;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonClearTheListOfCars;
         public System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewListOfCars;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStatus;

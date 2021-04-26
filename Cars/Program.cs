@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Автор: Кузугашев Иван Владимирович
+/// Дата: 26.04.2021
+/// </summary>
 namespace Cars
 {
     static class Program

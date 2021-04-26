@@ -9,6 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+/// <summary>
+/// Автор: Кузугашев Иван Владимирович
+/// Дата: 26.04.2021
+/// </summary>
 namespace Cars
 {
     public partial class Form2 : Form
@@ -33,7 +37,7 @@ namespace Cars
             label2.Text = labelText;
             foreach (var item in finalResults)
             {
-                dataGridView1.Rows.Add(item.Position, item.CarName, (item.SpentTime).ToString(@"hh\:mm\:ss\.fff"));
+                dataGridViewFinalists.Rows.Add(item.Position, item.CarName, (item.SpentTime).ToString(@"hh\:mm\:ss\.fff"));
             }
             //dataGridView1.Sort(dataGridView1.Columns[2], ListSortDirection.Ascending);
             //for (int i = 0; i < finalResults.Count; i++)

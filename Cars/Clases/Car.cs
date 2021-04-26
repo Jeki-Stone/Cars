@@ -5,7 +5,9 @@ using System.Windows.Forms;
 namespace Cars.Clases
 {
     /// <summary>
-    /// класс машин
+    /// Автор: Кузугашев Иван Владимирович
+    /// Дата: 26.04.2021
+    /// Класс машин
     /// </summary>
     class Car : ICar, IDisposable
     {
