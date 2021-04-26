@@ -26,14 +26,14 @@ namespace Cars
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFinalists = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.buttonYes = new System.Windows.Forms.Button();
+            this.buttonNo = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinalists)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -56,22 +56,22 @@ namespace Cars
             this.label2.TabIndex = 1;
             this.label2.Text = "00:00:00";
             // 
-            // dataGridView1
+            // dataGridViewFinalists
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewFinalists.AllowUserToAddRows = false;
+            this.dataGridViewFinalists.AllowUserToDeleteRows = false;
+            this.dataGridViewFinalists.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFinalists.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3});
-            this.dataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 79);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(363, 402);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridViewFinalists.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dataGridViewFinalists.Location = new System.Drawing.Point(5, 79);
+            this.dataGridViewFinalists.Name = "dataGridViewFinalists";
+            this.dataGridViewFinalists.RowHeadersVisible = false;
+            this.dataGridViewFinalists.RowTemplate.Height = 25;
+            this.dataGridViewFinalists.Size = new System.Drawing.Size(363, 402);
+            this.dataGridViewFinalists.TabIndex = 2;
             // 
             // Column1
             // 
@@ -89,27 +89,27 @@ namespace Cars
             this.Column3.HeaderText = "Время";
             this.Column3.Name = "Column3";
             // 
-            // button1
+            // buttonYes
             // 
-            this.button1.DialogResult = System.Windows.Forms.DialogResult.Yes;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(91, 514);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 35);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Да";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonYes.DialogResult = System.Windows.Forms.DialogResult.Yes;
+            this.buttonYes.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonYes.Location = new System.Drawing.Point(91, 514);
+            this.buttonYes.Name = "buttonYes";
+            this.buttonYes.Size = new System.Drawing.Size(75, 35);
+            this.buttonYes.TabIndex = 3;
+            this.buttonYes.Text = "Да";
+            this.buttonYes.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonNo
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.No;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(200, 514);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 35);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Нет";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonNo.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.buttonNo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonNo.Location = new System.Drawing.Point(200, 514);
+            this.buttonNo.Name = "buttonNo";
+            this.buttonNo.Size = new System.Drawing.Size(75, 35);
+            this.buttonNo.TabIndex = 4;
+            this.buttonNo.Text = "Нет";
+            this.buttonNo.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -125,15 +125,15 @@ namespace Cars
             // 
             this.ClientSize = new System.Drawing.Size(376, 561);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.buttonNo);
+            this.Controls.Add(this.buttonYes);
+            this.Controls.Add(this.dataGridViewFinalists);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form2";
             this.Text = "Таблица первенства";
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFinalists)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,9 +143,9 @@ namespace Cars
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridViewFinalists;
+        private System.Windows.Forms.Button buttonYes;
+        private System.Windows.Forms.Button buttonNo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
