@@ -8,12 +8,18 @@
 
   <ItemGroup>
     <None Remove="Img\car.png" />
+    <None Remove="Img\carBroken.png" />
     <None Remove="Img\flag.png" />
     <None Remove="Img\motorcycle.png" />
+    <None Remove="Img\motorcycleBroken.png" />
     <None Remove="Img\truck.png" />
+    <None Remove="Img\truckBroken.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Img\carBroken.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Img\car.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -23,7 +29,13 @@
     <Content Include="Img\motorcycle.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Img\motorcycleBroken.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Img\truck.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Img\truckBroken.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

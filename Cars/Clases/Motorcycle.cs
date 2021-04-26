@@ -4,6 +4,8 @@ using System.Windows.Forms;
 namespace Cars.Clases
 {
     /// <summary>
+    /// Автор: Кузугашев Иван Владимирович
+    /// Дата: 26.04.2021
     /// Класс мотоцикл
     /// </summary>
     class Motorcycle : Car

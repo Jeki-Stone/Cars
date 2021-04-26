@@ -26,27 +26,27 @@ namespace Cars
         /// <summary>
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && dataGridView1.Rows.Count > 0)
+            if (txtTrackLength.Text != "" && dataGridViewListOfCars.Rows.Count > 0)
             {
                 if (!trec.IsStarted)
                 {
                     timer1.Start();
-                    trec.SetTrackLength(Convert.ToInt32(textBox1.Text));
+                    trec.SetTrackLength(Convert.ToInt32(txtTrackLength.Text));
                     trec.Start();
                     startDt = DateTime.Now;
-                    button1.Text = "СТОП";
+                    buttonRaceStart.Text = "СТОП";
                     groupBox1.Enabled = false;
-                    textBox1.Enabled = false;
-                    button3.Enabled = false;
+                    txtTrackLength.Enabled = false;
+                    buttonClearTheListOfCars.Enabled = false;
                 }
                 else
                 {
                     timer1.Stop();
                     trec.Stop();
-                    button1.Text = "СТАРТ";
+                    buttonRaceStart.Text = "СТАРТ";
                     groupBox1.Enabled = true;
-                    textBox1.Enabled = true;
-                    button3.Enabled = true;
+                    txtTrackLength.Enabled = true;
+                    buttonClearTheListOfCars.Enabled = true;
                 }
             }
             else
@@ -65,7 +65,7 @@ namespace Cars
         {
             var trackLength = 2;
             trec = new RacingTrack(trackLength);
-            textBox1.Text = trackLength.ToString();
+            txtTrackLength.Text = trackLength.ToString();
         }
 
         /// <summary>
@@ -79,16 +79,16 @@ namespace Cars
             // Выводит пройденный путь транспорта
             for (int i = 0; i < trec.Cars.Count; i++)
             {
-                dataGridView1[9, i].Value = Math.Round(trec.Cars[i].DistanceTraveled, 4);
+                dataGridViewListOfCars[9, i].Value = Math.Round(trec.Cars[i].DistanceTraveled, 4);
                 if (trec.Cars[i].IsBroken)
                 {
-                    dataGridView1[2, i].Value = "Прокол";
-                    dataGridView1[2, i].Style.BackColor = Color.Red;
+                    dataGridViewListOfCars[2, i].Value = "Прокол";
+                    dataGridViewListOfCars[2, i].Style.BackColor = Color.Red;
                 }
                 else
                 {
-                    dataGridView1[2, i].Value = "Исправен";
-                    dataGridView1[2, i].Style.BackColor = Color.Lime;
+                    dataGridViewListOfCars[2, i].Value = "Исправен";
+                    dataGridViewListOfCars[2, i].Style.BackColor = Color.Lime;
                 }
             }
 
@@ -98,20 +98,15 @@ namespace Cars
             {
                 timer1.Stop();
                 trec.Stop();
-                button1.Text = "СТАРТ";
+                buttonRaceStart.Text = "СТАРТ";
                 groupBox1.Enabled = true;
-                textBox1.Enabled = true;
-                button3.Enabled = true;
+                txtTrackLength.Enabled = true;
+                buttonClearTheListOfCars.Enabled = true;
                 
-                // запоним список финалистов
+                // Запоним список финалистов
                 var finalResults = new List<FinalResult>();
                 int i = 0;
                 finalResults = trec.Cars.OrderBy(el => el.TimeStop).Select(el => new FinalResult { Position = ++i, CarName = el.TransportType + " №" + i, SpentTime = (DateTime)el.TimeStop - el.TimeStart }).ToList();
-
-                //for (int i = 0; i < trec.Cars.Count; i++)
-                //{
-                //    finalResults.Add(new FinalResult { CarName = trec.Cars[i].TransportType + " №" + i, SpentTime = (DateTime)trec.Cars[i].TimeStop - trec.Cars[i].TimeStart });
-                //}
 
                 // Вызывает форму финалистов
                 Form2 form2 = new Form2(label2.Text, finalResults);
@@ -129,7 +124,7 @@ namespace Cars
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            if (comboBox2.Text == "" || txtSpeed.Text == "" || textBox3.Text == "" || textBox4.Text == "" )
+            if (comboBoxTransportType.Text == "" || txtSpeed.Text == "" || txtPunctureСhance.Text == "" || txtRepairTime.Text == "" )
             {
                 // Сообщение если не заданы параметры машинки
                 MessageBox.Show(
@@ -142,11 +137,11 @@ namespace Cars
             else
             {
                 int speed = Convert.ToInt32(txtSpeed.Text);
-                int chanceBreak = Convert.ToInt32(textBox3.Text);
-                int repairTime = Convert.ToInt32(textBox4.Text);
+                int chanceBreak = Convert.ToInt32(txtPunctureСhance.Text);
+                int repairTime = Convert.ToInt32(txtRepairTime.Text);
                 int unikal = 0;
-                if (textBox5.Visible == true && textBox5.Text != "")
-                    unikal = Convert.ToInt32(textBox5.Text);
+                if (txtPassengersOrCargo.Visible == true && txtPassengersOrCargo.Text != "")
+                    unikal = Convert.ToInt32(txtPassengersOrCargo.Text);
                 string sidecar = "";
                 bool sidcarTF = false;
                 if (checkBox1.Checked == true && checkBox1.Visible == true)
@@ -160,36 +155,36 @@ namespace Cars
                 }
 
                 // Создаёт класс легковой автомобиль
-                if (comboBox2.SelectedIndex == 0)
+                if (comboBoxTransportType.SelectedIndex == 0)
                 {
-                    var car = new Car(panel1, @"Img\car.png", @"Img\flag.png", speed, chanceBreak, repairTime, unikal, 353, 188);
+                    var car = new Car(panel1, @"Img\car.png", @"Img\carBroken.png", speed, chanceBreak, repairTime, unikal, 353, 188);
                     trec.Cars.Add(car);
-                    dataGridView1.Rows.Add(trec.Cars.Count, car.TransportType, "Исправен", speed, chanceBreak, repairTime, unikal);
+                    dataGridViewListOfCars.Rows.Add(trec.Cars.Count, car.TransportType, "Исправен", speed, chanceBreak, repairTime, unikal);
                 }
                 // Создаёт класс грузовой автомобиль
-                if (comboBox2.SelectedIndex == 1)
+                if (comboBoxTransportType.SelectedIndex == 1)
                 {
-                    var truck = new Truck(panel1, @"Img\truck.png", @"Img\flag.png", speed, chanceBreak, repairTime, unikal, 353, 188);
+                    var truck = new Truck(panel1, @"Img\truck.png", @"Img\truckBroken.png", speed, chanceBreak, repairTime, unikal, 353, 188);
                     trec.Cars.Add(truck);
-                    dataGridView1.Rows.Add(trec.Cars.Count, truck.TransportType, "Исправен", speed, chanceBreak, repairTime, null, unikal);
+                    dataGridViewListOfCars.Rows.Add(trec.Cars.Count, truck.TransportType, "Исправен", speed, chanceBreak, repairTime, null, unikal);
                 }
                 // Создаёт класс мотоцикл
-                if (comboBox2.SelectedIndex == 2)
+                if (comboBoxTransportType.SelectedIndex == 2)
                 {
-                    var motorcycle = new Motorcycle(panel1, @"Img\motorcycle.png", @"Img\flag.png", speed, chanceBreak, repairTime, sidcarTF, 353, 188);
+                    var motorcycle = new Motorcycle(panel1, @"Img\motorcycle.png", @"Img\motorcycleBroken.png", speed, chanceBreak, repairTime, sidcarTF, 353, 188);
                     trec.Cars.Add(motorcycle);
-                    dataGridView1.Rows.Add(trec.Cars.Count, motorcycle.TransportType, "Исправен", speed, chanceBreak, repairTime, null, null, sidecar);
+                    dataGridViewListOfCars.Rows.Add(trec.Cars.Count, motorcycle.TransportType, "Исправен", speed, chanceBreak, repairTime, null, null, sidecar);
                 }
 
                 for (int i = 0; i < trec.Cars.Count; i++)
                 {
-                    dataGridView1[2, i].Style.BackColor = Color.Lime;
+                    dataGridViewListOfCars[2, i].Style.BackColor = Color.Lime;
                 }
 
                 // Очищает поля 
-                comboBox2.Text = null;
+                comboBoxTransportType.Text = null;
                 CleaningFields();
-                textBox5.Visible = false;
+                txtPassengersOrCargo.Visible = false;
                 checkBox1.Visible = false;
                 label9.Visible = false;
 
@@ -214,29 +209,29 @@ namespace Cars
         /// <param name="e"></param>
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == 0)
+            if (comboBoxTransportType.SelectedIndex == 0)
             {
                 label9.Visible = true;
                 label9.Text = "Количество пассажиров:";
-                textBox5.Visible = true;
+                txtPassengersOrCargo.Visible = true;
                 checkBox1.Visible = false;
                 // Очищает поля 
                 CleaningFields();
             }
-            if (comboBox2.SelectedIndex == 1)
+            if (comboBoxTransportType.SelectedIndex == 1)
             {
                 label9.Visible = true;
-                label9.Text = "Количество груза:";
-                textBox5.Visible = true;
+                label9.Text = "Количество груза, Т:";
+                txtPassengersOrCargo.Visible = true;
                 checkBox1.Visible = false;
                 // Очищает поля 
                 CleaningFields();
             }
-            if (comboBox2.SelectedIndex == 2)
+            if (comboBoxTransportType.SelectedIndex == 2)
             {
                 label9.Visible = true;
                 label9.Text = "Наличее коляски:";
-                textBox5.Visible = false;
+                txtPassengersOrCargo.Visible = false;
                 checkBox1.Visible = true;
                 // Очищает поля 
                 CleaningFields();                
@@ -249,9 +244,9 @@ namespace Cars
         private void CleaningFields()
         {
             txtSpeed.Text = null;
-            textBox3.Text = null;
-            textBox4.Text = null;
-            textBox5.Text = null;
+            txtPunctureСhance.Text = null;
+            txtRepairTime.Text = null;
+            txtPassengersOrCargo.Text = null;
             checkBox1.Checked = false;
         }
 
@@ -267,9 +262,73 @@ namespace Cars
                 item.Dispose();
             }
             trec.Cars.Clear();
-            dataGridView1.Rows.Clear();
+            dataGridViewListOfCars.Rows.Clear();
         }
 
-       
+        /// <summary>
+        /// Ограничение на ввод только цифр
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBoxTextWrite_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+            }
+        }
+
+
+        /// <summary>
+        /// Ограничение на ввод цифр в диапазоне от 0 до 100
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPunctureСhance_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+                return;
+            }
+            if (number != 8 && txtPunctureСhance.Text != "" && Convert.ToInt32(txtPunctureСhance.Text + e.KeyChar) > 100)
+            {
+                txtPunctureСhance.Text = "100";
+            }
+        }
+
+        /// <summary>
+        /// Ограничение на ввод цифр в зависимости от типа транспорта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtPassengersOrCargo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            if (!Char.IsDigit(number) && number != 8) // цифры и клавиша BackSpace
+            {
+                e.Handled = true;
+                return;
+            }
+            if (comboBoxTransportType.SelectedIndex == 0)
+            {
+                if (number != 8 && Convert.ToInt32(txtPassengersOrCargo.Text + e.KeyChar) > 4 && txtPassengersOrCargo.Text + e.KeyChar != "")
+                {
+                    txtPassengersOrCargo.Text = "4";
+                    e.Handled = true;
+                }
+                
+            }
+            if (comboBoxTransportType.SelectedIndex == 1)
+            {
+                if (number != 8 && Convert.ToInt32(txtPassengersOrCargo.Text + e.KeyChar) > 20 && txtPassengersOrCargo.Text + e.KeyChar != "")
+                {
+                    txtPassengersOrCargo.Text = "20";
+                    e.Handled = true;
+                }
+            }
+        }
     }
 }
